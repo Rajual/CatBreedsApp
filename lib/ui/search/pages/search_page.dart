@@ -34,16 +34,30 @@ class _SearchPageState extends State<SearchPage> {
                 ],
               );
             }
-            return Center(
-                child: Column(
-              children: [
-                const CircularProgressIndicator(),
-                Image.asset("assets/black_cat.png")
-              ],
-            ));
+            return const SplashScreenPage();
           },
         ),
       ),
     );
+  }
+}
+
+class SplashScreenPage extends StatelessWidget {
+  const SplashScreenPage({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+        child: Padding(
+      padding: const EdgeInsets.only(top: 20),
+      child: Column(
+        children: [
+          const CircularProgressIndicator(),
+          Image.asset("assets/black_cat.png")
+        ],
+      ),
+    ));
   }
 }
