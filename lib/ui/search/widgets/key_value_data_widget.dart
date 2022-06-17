@@ -11,21 +11,26 @@ class KeyValueDataWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTextStyle(
-        style: TextStyle(fontSize: 15),
-        child: SelectableText.rich(TextSpan(
-            style: TextStyle(
-              color: Theme.of(context).textTheme.subtitle1!.color,
-            ),
-            children: [
-              TextSpan(
-                style: const TextStyle(fontWeight: FontWeight.bold),
-                text: '$name: ',
+    return Padding(
+      padding: const EdgeInsets.all(2.0),
+      child: DefaultTextStyle(
+          textAlign: TextAlign.center,
+          style: const TextStyle(fontSize: 15),
+          child: SelectableText.rich(TextSpan(
+              style: TextStyle(
+                overflow: TextOverflow.clip,
+                color: Theme.of(context).textTheme.subtitle1!.color,
               ),
-              TextSpan(
-                style: const TextStyle(),
-                text: '$value',
-              )
-            ])));
+              children: [
+                TextSpan(
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                  text: '$name: ',
+                ),
+                TextSpan(
+                  style: const TextStyle(),
+                  text: '$value',
+                )
+              ]))),
+    );
   }
 }

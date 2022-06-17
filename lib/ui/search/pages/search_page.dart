@@ -5,6 +5,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../blocs/search/search_bloc.dart';
+import '../widgets/build_list_card_widget.dart';
 import '../widgets/search_cats_widget.dart';
 
 //Page for show all card with cat data.
@@ -20,7 +21,7 @@ class _SearchPageState extends State<SearchPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(),
+        appBar: AppBar(centerTitle: true, title: const Text('CATBREEDS')),
         body: FutureBuilder<List<CatData>>(
           future: CatDataRepository().getCatData(),
           builder: (context, snapshot) {
@@ -29,18 +30,7 @@ class _SearchPageState extends State<SearchPage> {
                 mainAxisSize: MainAxisSize.min,
                 children: [
                   const SearchCatWidget(),
-                  BlocBuilder<SearchBloc, SearchState>(
-                    builder: (context, state) {
-                      return Expanded(
-                        child: ListView.builder(
-                          itemCount: snapshot.data?.length,
-                          itemBuilder: (context, index) {
-                            return CardCat(catData: snapshot.data![index]);
-                          },
-                        ),
-                      );
-                    },
-                  ),
+                  BuilderListCardWidget(listCatData: snapshot.data),
                 ],
               );
             }

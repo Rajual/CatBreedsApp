@@ -12,38 +12,71 @@ class CardCat extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.only(right: 8, left: 8),
       child: Card(
+        color: Colors.grey.shade50,
+        elevation: 20,
         clipBehavior: Clip.antiAlias,
-        child: Column(
-          mainAxisSize: MainAxisSize.min,
+        child: Stack(
           children: [
-            Text(
-              catData.name,
-              style: TextStyle(),
-            ),
-            Row(
+            Column(
+              mainAxisSize: MainAxisSize.min,
               children: [
-                //Maker that the with cat image 1/2 the withe card.
-                Expanded(
-                  flex: 1,
-                  child: Image.network(
-                    catData.image?.url ?? '',
-                    errorBuilder: (context, object, stack) {
-                      return Container();
-                    },
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Text(
+                    catData.name,
+                    style: const TextStyle(
+                        fontSize: 20, fontWeight: FontWeight.bold),
                   ),
                 ),
-                Expanded(
-                    flex: 1,
-                    child: Column(
-                      children: [
-                        KeyValueDataWidget(
-                          name: 'Age (Years)',
-                          value: catData.lifeSpan,
-                        )
-                      ],
-                    ))
+                Row(
+                  children: [
+                    //Maker that the with cat image 1/2 the withe card.
+                    Expanded(
+                      flex: 1,
+                      child: Image.network(
+                        catData.image?.url ?? '',
+                        errorBuilder: (context, object, stack) {
+                          return Container();
+                        },
+                      ),
+                    ),
+                    Expanded(
+                        flex: 1,
+                        child: Padding(
+                          padding: const EdgeInsets.only(bottom: 20),
+                          child: Column(
+                            children: [
+                              KeyValueDataWidget(
+                                name: 'Life expectancy (Years)',
+                                value: catData.lifeSpan,
+                              ),
+                              KeyValueDataWidget(
+                                name: 'Origin',
+                                value: catData.origin,
+                              ),
+                              KeyValueDataWidget(
+                                name: 'Intelligence',
+                                value: catData.intelligence.toString(),
+                              ),
+                            ],
+                          ),
+                        ))
+                  ],
+                )
               ],
-            )
+            ),
+            Positioned(
+                top: 0,
+                right: 2,
+                child: Row(
+                  children: [
+                    // const Text('Ver mas...'),
+                    IconButton(
+                        tooltip: 'Aca para mas',
+                        onPressed: () {},
+                        icon: const Icon(Icons.arrow_forward_ios_sharp)),
+                  ],
+                ))
           ],
         ),
       ),
