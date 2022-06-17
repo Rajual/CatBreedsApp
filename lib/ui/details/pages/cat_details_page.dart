@@ -32,49 +32,59 @@ class CatDetailPage extends StatelessWidget {
           ),
           Expanded(
             flex: 1,
-            child: ListView(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: Text(
-                    catData.description,
-                    textAlign: TextAlign.justify,
-                    style: const TextStyle(fontSize: 23),
+            child: Scrollbar(
+              thickness: 10,
+              child: ListView(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Text(
+                      catData.description,
+                      textAlign: TextAlign.justify,
+                      style: const TextStyle(fontSize: 23),
+                    ),
                   ),
-                ),
-                KeyValueDataWidget(
+                  KeyValueDataWidget(
+                      size: sizeText,
+                      name: 'Life expectancy (Years)',
+                      value: catData.lifeSpan),
+                  KeyValueDataWidget(
                     size: sizeText,
-                    name: 'Life expectancy (Years)',
-                    value: catData.lifeSpan),
-                KeyValueDataWidget(
-                  size: sizeText,
-                  name: 'Origin',
-                  value: catData.origin,
-                ),
-                KeyValueDataWidget(
-                  size: sizeText,
-                  name: 'Intelligence',
-                  value: catData.intelligence.toString(),
-                ),
-                KeyValueDataWidget(
-                  size: sizeText,
-                  name: 'Alt. Names',
-                  value: (catData.altNames == null)
-                      ? 'N/A'
-                      : (catData.altNames!.isEmpty ? 'N/A' : catData.altNames),
-                ),
-                KeyValueDataWidget(
-                  size: sizeText,
-                  name: 'Temperament',
-                  value: catData.temperament,
-                ),
-                KeyValueDataWidget(
-                  size: sizeText,
-                  name: 'More datas',
-                  value: catData.wikipediaUrl,
-                  isLink: true,
-                ),
-              ],
+                    name: 'Origin',
+                    value: catData.origin,
+                  ),
+                  KeyValueDataWidget(
+                    size: sizeText,
+                    name: 'Intelligence',
+                    value: catData.intelligence.toString(),
+                  ),
+                  KeyValueDataWidget(
+                    size: sizeText,
+                    name: 'Alt. Names',
+                    value: (catData.altNames == null)
+                        ? 'N/A'
+                        : (catData.altNames!.isEmpty
+                            ? 'N/A'
+                            : catData.altNames),
+                  ),
+                  KeyValueDataWidget(
+                    size: sizeText,
+                    name: 'Temperament',
+                    value: catData.temperament,
+                  ),
+                  KeyValueDataWidget(
+                    size: sizeText,
+                    name: 'Adaptability',
+                    value: catData.adaptability.toString(),
+                  ),
+                  KeyValueDataWidget(
+                    size: sizeText,
+                    name: 'More datas',
+                    value: catData.wikipediaUrl,
+                    isLink: true,
+                  ),
+                ],
+              ),
             ),
           )
         ],

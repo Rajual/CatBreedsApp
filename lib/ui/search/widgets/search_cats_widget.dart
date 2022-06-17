@@ -22,6 +22,7 @@ class SearchCatWidget extends StatelessWidget {
   }
 
   InputDecoration _inputDecoration() {
-    return const InputDecoration(icon: Icon(Icons.search));
+    return const InputDecoration(
+        icon: Icon(Icons.search), hintText: 'Search a breed...');
   }
 }
