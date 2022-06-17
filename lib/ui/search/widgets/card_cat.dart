@@ -1,4 +1,5 @@
 import 'package:catbreeds/models/cat_data_model.dart';
+import 'package:catbreeds/ui/details/pages/cat_details_page.dart';
 import 'package:catbreeds/ui/search/widgets/key_value_data_widget.dart';
 import 'package:flutter/material.dart';
 
@@ -73,7 +74,14 @@ class CardCat extends StatelessWidget {
                     // const Text('Ver mas...'),
                     IconButton(
                         tooltip: 'Aca para mas',
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (_) => CatDetailPage(
+                                        catData: catData,
+                                      )));
+                        },
                         icon: const Icon(Icons.arrow_forward_ios_sharp)),
                   ],
                 ))

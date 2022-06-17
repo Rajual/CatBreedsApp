@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [BlocProvider<SearchBloc>(create: (_) => SearchBloc())],
-      child: MaterialApp(
+      child: const MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'Catbreeds',
         home: SearchPage(),
