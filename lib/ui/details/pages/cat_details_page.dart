@@ -8,6 +8,7 @@ class CatDetailPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double sizeText = 23.0;
     return SafeArea(
         child: Scaffold(
       appBar: AppBar(
@@ -42,26 +43,36 @@ class CatDetailPage extends StatelessWidget {
                   ),
                 ),
                 KeyValueDataWidget(
-                    name: 'Life expectancy (Years)', value: catData.lifeSpan),
+                    size: sizeText,
+                    name: 'Life expectancy (Years)',
+                    value: catData.lifeSpan),
                 KeyValueDataWidget(
+                  size: sizeText,
                   name: 'Origin',
                   value: catData.origin,
                 ),
                 KeyValueDataWidget(
+                  size: sizeText,
                   name: 'Intelligence',
                   value: catData.intelligence.toString(),
                 ),
                 KeyValueDataWidget(
+                  size: sizeText,
                   name: 'Alt. Names',
-                  value: catData.altNames ?? 'N/A',
+                  value: (catData.altNames == null)
+                      ? 'N/A'
+                      : (catData.altNames!.isEmpty ? 'N/A' : catData.altNames),
                 ),
                 KeyValueDataWidget(
+                  size: sizeText,
                   name: 'Temperament',
                   value: catData.temperament,
                 ),
                 KeyValueDataWidget(
-                  name: 'More data',
+                  size: sizeText,
+                  name: 'More datas',
                   value: catData.wikipediaUrl,
+                  isLink: true,
                 ),
               ],
             ),
