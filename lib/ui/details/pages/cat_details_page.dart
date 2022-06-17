@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:catbreeds/models/cat_data_model.dart';
 import 'package:catbreeds/ui/search/widgets/key_value_data_widget.dart';
 import 'package:flutter/material.dart';
@@ -22,10 +23,13 @@ class CatDetailPage extends StatelessWidget {
             child: Card(
               elevation: 12,
               color: Colors.grey.shade50,
-              child: Image.network(
-                catData.image?.url ?? '',
-                errorBuilder: (context, object, stack) {
+              child: CachedNetworkImage(
+                imageUrl: catData.image?.url ?? '',
+                errorWidget: (context, string, dynamic) {
                   return Container();
+                },
+                progressIndicatorBuilder: (context, string, downloadProgress) {
+                  return const Center(child: CircularProgressIndicator());
                 },
               ),
             ),

@@ -2,6 +2,7 @@ import 'package:catbreeds/models/cat_data_model.dart';
 import 'package:catbreeds/ui/details/pages/cat_details_page.dart';
 import 'package:catbreeds/ui/search/widgets/key_value_data_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 //Card for show a resume of other cat.
 class CardCat extends StatelessWidget {
@@ -34,12 +35,22 @@ class CardCat extends StatelessWidget {
                     //Maker that the with cat image 1/2 the withe card.
                     Expanded(
                       flex: 1,
-                      child: Image.network(
+                      child: CachedNetworkImage(
+                        imageUrl: catData.image?.url ?? '',
+                        errorWidget: (context, string, dynamic) {
+                          return Container();
+                        },
+                        progressIndicatorBuilder:
+                            (context, string, downloadProgress) {
+                          return Center(child: CircularProgressIndicator());
+                        },
+                      ) /*Image.network(
                         catData.image?.url ?? '',
                         errorBuilder: (context, object, stack) {
                           return Container();
                         },
-                      ),
+                      )*/
+                      ,
                     ),
                     Expanded(
                         flex: 1,
